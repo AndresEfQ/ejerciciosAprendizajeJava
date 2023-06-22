@@ -29,10 +29,6 @@ public class Ej04_Rectangulo {
         this.altura = altura;
     }
 
-    public static Ej04_Rectangulo crearRectangulo(int base, int altura) {
-        return new Ej04_Rectangulo(base, altura);
-    }
-
     public int calcularSuperficie() {
         return this.altura * this.base;
     }

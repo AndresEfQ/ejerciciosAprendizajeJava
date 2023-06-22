@@ -1,6 +1,7 @@
 package clasesMain;
 
 import entidades.Ej07_Persona;
+import servicios.Ej07_servicioPersona;
 
 import java.util.Scanner;
 
@@ -8,20 +9,16 @@ public class Ej07 {
 
     public static void main(String[] args) {
 
-        // Instanciado con constructor con todas las variables:
-        Ej07_Persona p1 = new Ej07_Persona("Andrés", 34, "h", 86, 165);
-        Ej07_Persona p2 = new Ej07_Persona("Sofía", 5, "m", 25, 110);
+        Ej07_servicioPersona sp = new Ej07_servicioPersona();
 
-        // Instanciado con constructor vacío y luego asignado atributos con los setter.
-        Ej07_Persona p3 = new Ej07_Persona();
-        p2.setNombre("Carol");
-        p2.setEdad(36);
-        p2.setSexo("m");
-        p2.setPeso(67);
-        p2.setAltura(163);
+        // Instanciado con crear persona con todas las variables:
+        Ej07_Persona p1 = sp.crearPersona("Andrés", 34, "h", 86, 165);
+        Ej07_Persona p2 = sp.crearPersona("Sofía", 5, "m", 25, 110);
+        Ej07_Persona p3 = sp.crearPersona("Carol", 36, "m", 67, 163);
+
 
         // Creado con el método crear persona
-        Ej07_Persona p4 = Ej07_Persona.crearPersona();
+        Ej07_Persona p4 = sp.crearPersona();
 
         Ej07_Persona[] personas = new Ej07_Persona[4];
         personas[0] = p1;
@@ -31,12 +28,12 @@ public class Ej07 {
 
         int[] imcArray = new int[4];
         for (int i = 0; i < personas.length; i++) {
-            imcArray[i] = personas[i].calcularIMC();
+            imcArray[i] = sp.calcularIMC(personas[i]);
         }
 
         boolean[] sonMayores = new boolean[4];
         for (int i = 0; i < personas.length; i++) {
-            sonMayores[i] = personas[i].esMayorDeEdad();
+            sonMayores[i] = sp.esMayorDeEdad(personas[i]);
         }
 
         int bajoPeso = 0;
