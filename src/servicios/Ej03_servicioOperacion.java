@@ -6,46 +6,52 @@ import java.util.Scanner;
 
 public class Ej03_servicioOperacion {
 
-    public Ej03_Operacion crearOperacion() {
+    private final Ej03_Operacion operacion = new Ej03_Operacion();
+
+    public void crearOperacion() {
 
         Scanner sc = new Scanner(System.in);
 
-        Ej03_Operacion operacion = new Ej03_Operacion();
-
         System.out.print("Número 1: ");
-        operacion.setNumero1(sc.nextInt());
+        this.operacion.setNumero1(sc.nextInt());
 
         System.out.print("Número 2: ");
-        operacion.setNumero2(sc.nextInt());
-
-        return operacion;
+        this.operacion.setNumero2(sc.nextInt());
     }
 
-    public int sumar(Ej03_Operacion operacion) {
-        return operacion.getNumero1() + operacion.getNumero2();
+    public int sumar() {
+        return this.operacion.getNumero1() + this.operacion.getNumero2();
     }
 
-    public int restar(Ej03_Operacion operacion) {
-        return operacion.getNumero1() - operacion.getNumero2();
+    public int restar() {
+        return this.operacion.getNumero1() - this.operacion.getNumero2();
     }
 
-    public int multipicar(Ej03_Operacion operacion) {
+    public int multipicar() {
 
-        if (operacion.getNumero1() == 0 || operacion.getNumero2() == 0) {
+        if (this.operacion.getNumero1() == 0 || this.operacion.getNumero2() == 0) {
             System.out.println("ERROR: Multipicación por 0 no soportada");
             return 0;
         }
 
-        return operacion.getNumero1() * operacion.getNumero2();
+        return this.operacion.getNumero1() * this.operacion.getNumero2();
     }
 
-    public int dividir(Ej03_Operacion operacion) {
+    public int dividir() {
 
-        if (operacion.getNumero1() == 0 || operacion.getNumero2() == 0) {
+        if (this.operacion.getNumero1() == 0 || this.operacion.getNumero2() == 0) {
             System.out.println("ERROR: División por 0 no soportada");
             return 0;
         }
 
-        return operacion.getNumero1() / operacion.getNumero2();
+        return this.operacion.getNumero1() / this.operacion.getNumero2();
+    }
+
+    public int mostrarNum1() {
+        return this.operacion.getNumero1();
+    }
+
+    public int mostrarNum2() {
+        return this.operacion.getNumero2();
     }
 }

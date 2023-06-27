@@ -6,28 +6,28 @@ import java.util.Scanner;
 
 public class Ej01_servicioLibro {
 
-    private final Scanner sc = new Scanner(System.in).useDelimiter("\n");
+    private final Ej01_Libro libro = new Ej01_Libro();
 
-    public Ej01_Libro cargarLibro() {
+    public void cargarLibro() {
+
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("Ingresa los datos del libro");
 
         System.out.print("ISBN: ");
-        int ISBN = Integer.parseInt(sc.next());
+        this.libro.setISBN(Integer.parseInt(sc.nextLine()));
 
         System.out.print("Título: ");
-        String titulo = sc.next();
+        this.libro.setTitulo(sc.nextLine());
 
         System.out.print("Autor: ");
-        String autor = sc.next();
+        this.libro.setAutor(sc.nextLine());
 
         System.out.print("Número de páginas: ");
-        int paginas = Integer.parseInt(sc.next());
-
-        return new Ej01_Libro(ISBN, titulo, autor, paginas);
+        this.libro.setPaginas(Integer.parseInt(sc.next()));
     }
 
-    public void mostrarLibro(Ej01_Libro libro) {
-        System.out.println("Libro: {ISBN='" + libro.ISBN + "', Titulo:='" + libro.titulo + "', Autor='" + libro.autor + "', Páginas='" + libro.paginas + "'}");
+    public void mostrarLibro() {
+        System.out.println(this.libro);
     }
 }

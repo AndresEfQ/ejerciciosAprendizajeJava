@@ -1,27 +1,28 @@
 package servicios;
 
 import entidades.Ej02_Circunferencia;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Scanner;
 
 public class Ej02_servicioCircunferencia {
 
-    private final Scanner sc = new Scanner(System.in);
+    private final Ej02_Circunferencia circunferencia = new Ej02_Circunferencia();
 
-    public Ej02_Circunferencia crearCircunferencia() {
+    public void crearCircunferencia() {
+
+        Scanner sc = new Scanner(System.in);
 
         System.out.print("Ingresa el radio de la circunferencia: ");
-        return new Ej02_Circunferencia(sc.nextDouble());
+        this.circunferencia.setRadio(sc.nextDouble());
     }
 
-    public double area(@NotNull Ej02_Circunferencia circunferencia) {
+    public double area() {
 
-        return Math.PI * Math.pow(circunferencia.getRadio(), 2);
+        return Math.PI * Math.pow(this.circunferencia.getRadio(), 2);
     }
 
-    public double perimetro(@NotNull Ej02_Circunferencia circunferencia) {
+    public double perimetro() {
 
-        return 2 * Math.PI * circunferencia.getRadio();
+        return 2 * Math.PI * this.circunferencia.getRadio();
     }
 }

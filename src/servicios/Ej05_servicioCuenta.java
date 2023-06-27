@@ -6,51 +6,51 @@ import java.util.Scanner;
 
 public class Ej05_servicioCuenta {
 
-    public Ej05_Cuenta crearCuenta() {
+    private final Ej05_Cuenta cuenta = new Ej05_Cuenta();
+
+    public void crearCuenta() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Bienvenido al servicio de creación de cuentas");
         System.out.println("Por favor ingrese los siguientes datos:");
 
         System.out.print("Número de cuenta: ");
-        int cuenta = sc.nextInt();
+        this.cuenta.setNumeroCuenta(sc.nextInt());
 
         System.out.print("DNI cliente: ");
-        long dni = sc.nextLong();
+        this.cuenta.setDni(sc.nextLong());
 
         System.out.print("Saldo inicial: $");
-        int saldo = sc.nextInt();
+        this.cuenta.setSaldoActual(sc.nextDouble());
 
         System.out.print("Interés de la cuenta: %");
-        int interes = sc.nextInt();
-
-        return new Ej05_Cuenta(cuenta, dni, saldo, interes);
+        this.cuenta.setInteres(sc.nextInt());
     }
 
-    public void ingresar(Ej05_Cuenta cuenta, double ingreso) {
-        cuenta.setSaldoActual(cuenta.getSaldoActual() + ingreso);
-        System.out.println("Se ha ingresado $" + ingreso + ". El saldo actual de la cuenta es $" + cuenta.getSaldoActual());
+    public void ingresar(double ingreso) {
+        this.cuenta.setSaldoActual(this.cuenta.getSaldoActual() + ingreso);
+        System.out.println("Se ha ingresado $" + ingreso + ". El saldo actual de la cuenta es $" + this.cuenta.getSaldoActual());
     }
 
-    public void retirar(Ej05_Cuenta cuenta, double retiro) {
-        cuenta.setSaldoActual(cuenta.getSaldoActual() - retiro);
-        System.out.println("Se ha retirado " + retiro + "$. El saldo actual de la cuenta es $" + cuenta.getSaldoActual());
+    public void retirar(double retiro) {
+        this.cuenta.setSaldoActual(this.cuenta.getSaldoActual() - retiro);
+        System.out.println("Se ha retirado " + retiro + "$. El saldo actual de la cuenta es $" + this.cuenta.getSaldoActual());
     }
 
-    public void extraccionRapida(Ej05_Cuenta cuenta, double retiro) {
-        if (cuenta.getSaldoActual() * 0.2 > retiro) {
-            cuenta.setSaldoActual(cuenta.getSaldoActual() - retiro);
-            System.out.println("Se ha retirado " + retiro + "$. El saldo actual de la cuenta es $" + cuenta.getSaldoActual());
+    public void extraccionRapida(double retiro) {
+        if (this.cuenta.getSaldoActual() * 0.2 > retiro) {
+            this.cuenta.setSaldoActual(this.cuenta.getSaldoActual() - retiro);
+            System.out.println("Se ha retirado " + retiro + "$. El saldo actual de la cuenta es $" + this.cuenta.getSaldoActual());
         } else {
             System.out.println("Saldo insuficiente para realizar una extracción rápida, intente retirar de forma manual");
         }
     }
 
-    public void consultarSaldo(Ej05_Cuenta cuenta) {
-        System.out.println("El saldo actual de esta cuenta es $" + cuenta.getSaldoActual());
+    public void consultarSaldo() {
+        System.out.println("El saldo actual de esta cuenta es $" + this.cuenta.getSaldoActual());
     }
 
-    public void consultarDatos(Ej05_Cuenta cuenta) {
-        System.out.println(cuenta.toString());
+    public void consultarDatos() {
+        System.out.println(this.cuenta);
     }
 }

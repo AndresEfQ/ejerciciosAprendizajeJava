@@ -1,6 +1,5 @@
 package clasesMain;
 
-import entidades.Ej05_Cuenta;
 import servicios.Ej05_servicioCuenta;
 
 import java.util.Scanner;
@@ -12,25 +11,27 @@ public class Ej05 {
         Ej05_servicioCuenta sc = new Ej05_servicioCuenta();
         Scanner scan = new Scanner(System.in);
 
-        Ej05_Cuenta cuenta = sc.crearCuenta();
+        sc.crearCuenta();
 
-        sc.consultarDatos(cuenta);
+        sc.consultarDatos();
 
-        System.out.print("El saldo inicial de la cuenta es: ");
-        sc.consultarSaldo(cuenta);
+        sc.consultarSaldo();
 
         System.out.println("Ingrese saldo en la cuenta");
         System.out.print("Cantidad a ingresar: $");
-        sc.ingresar(cuenta, scan.nextDouble());
+        sc.ingresar(scan.nextDouble());
 
+        System.out.println();
         System.out.println("Retire saldo de la cuenta");
         System.out.print("Cantidad a retirar: $");
-        sc.retirar(cuenta, scan.nextDouble());
+        sc.retirar(scan.nextDouble());
 
+        System.out.println();
         System.out.println("Realice una extracción rápida de la cuenta");
         System.out.print("Cantidad a retirar: $");
-        sc.extraccionRapida(cuenta, scan.nextDouble());
+        sc.extraccionRapida(scan.nextDouble());
 
-        sc.consultarSaldo(cuenta);
+        System.out.println();
+        sc.consultarSaldo();
     }
 }

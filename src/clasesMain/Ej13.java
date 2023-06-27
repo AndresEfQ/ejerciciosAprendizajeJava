@@ -1,6 +1,5 @@
 package clasesMain;
 
-import entidades.Ej13_Curso;
 import servicios.Ej13_servicioCurso;
 
 public class Ej13 {

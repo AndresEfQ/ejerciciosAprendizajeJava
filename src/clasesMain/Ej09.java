@@ -1,6 +1,5 @@
 package clasesMain;
 
-import entidades.Ej09_Matematica;
 import servicios.Ej09_servicioMatematica;
 
 public class Ej09 {

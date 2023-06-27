@@ -6,15 +6,17 @@ import java.util.Scanner;
 
 public class Ej07_servicioPersona {
 
-    public Ej07_Persona crearPersona() {
+    private final Ej07_Persona persona = new Ej07_Persona();
+
+    public void crearPersona() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingresa los datos de la persona");
 
         System.out.print("Nombre: ");
-        String nombre = sc.nextLine();
+        this.persona.setNombre(sc.nextLine());
 
         System.out.print("Edad: ");
-        int edad = Integer.parseInt(sc.nextLine());
+        this.persona.setEdad(Integer.parseInt(sc.nextLine()));
 
         System.out.print("Sexo: ");
         String sexo = sc.nextLine();
@@ -23,29 +25,30 @@ public class Ej07_servicioPersona {
             System.out.println("Se asiganará el sexo 'O'");
         }
 
+        this.persona.setSexo(sexo);
+
         System.out.print("Peso: ");
-        int peso = sc.nextInt();
+        this.persona.setPeso(sc.nextInt());
 
         System.out.print("Altura: ");
-        int altura = sc.nextInt();
-
-        return new Ej07_Persona(nombre, edad, sexo, peso, altura);
+        this.persona.setAltura(sc.nextInt());
     }
 
-    public Ej07_Persona crearPersona(String nombre, int edad, String sexo, int peso, int altura) {
+    public void crearPersona(String nombre, int edad, String sexo, int peso, int altura) {
 
-        String sexoValido = sexo;
-        if (!sexoValido.equalsIgnoreCase("H") && !sexoValido.equalsIgnoreCase("M")) {
-            System.out.println("Se asiganará el sexo 'O'");
-            sexoValido = "O";
+        if (!sexo.equalsIgnoreCase("H") && !sexo.equalsIgnoreCase("M") && !sexo.equalsIgnoreCase("O")) {
+            System.out.println("Sexo inválido, se asiganará el sexo 'O'");
         }
-
-        return new Ej07_Persona(nombre, edad, sexoValido, peso, altura);
+        this.persona.setNombre(nombre);
+        this.persona.setEdad(edad);
+        this.persona.setSexo(sexo);
+        this.persona.setPeso(peso);
+        this.persona.setAltura(altura);
     }
 
-    public int calcularIMC(Ej07_Persona persona) {
-        int peso = persona.getPeso();
-        double altura = (double) persona.getAltura() / 100;
+    public int calcularIMC() {
+        int peso = this.persona.getPeso();
+        double altura = (double) this.persona.getAltura() / 100;
 
         double imc = peso / (Math.pow(altura, 2));
 
@@ -58,7 +61,7 @@ public class Ej07_servicioPersona {
         }
     }
 
-    public boolean esMayorDeEdad(Ej07_Persona persona) {
-        return persona.getEdad() >= 18;
+    public boolean esMayorDeEdad() {
+        return this.persona.getEdad() >= 18;
     }
 }

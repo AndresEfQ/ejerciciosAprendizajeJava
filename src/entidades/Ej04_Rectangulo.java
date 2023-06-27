@@ -28,25 +28,4 @@ public class Ej04_Rectangulo {
     public void setAltura(int altura) {
         this.altura = altura;
     }
-
-    public int calcularSuperficie() {
-        return this.altura * this.base;
-    }
-
-    public int calcularPerimetro() {
-        return (this.altura + this.base) * 2;
-    }
-
-    public void dibujarRectangulo() {
-        for (int i = 0; i < this.altura; i++) {
-            for (int j = 0; j < this.base; j++) {
-                if (i == 0 || i == this.altura - 1 || j == 0 || j == this.base - 1) {
-                    System.out.print("*");
-                } else {
-                    System.out.print(" ");
-                }
-            }
-            System.out.println();
-        }
-    }
 }

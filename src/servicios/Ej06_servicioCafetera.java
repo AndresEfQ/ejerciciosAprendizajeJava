@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Ej06_servicioCafetera {
 
-    private Ej06_Cafetera cafetera = new Ej06_Cafetera();
+    private final Ej06_Cafetera cafetera = new Ej06_Cafetera();
 
     public void crearCafetera() {
         Scanner sc = new Scanner(System.in);

@@ -7,15 +7,16 @@ public class Ej01 {
 
     public static void main(String[] args) {
 
-        Ej01_servicioLibro sl = new Ej01_servicioLibro();
+        Ej01_servicioLibro sl1 = new Ej01_servicioLibro();
+        Ej01_servicioLibro sl2 = new Ej01_servicioLibro();
 
-        Ej01_Libro libro1 = sl.cargarLibro();
-        Ej01_Libro libro2 = sl.cargarLibro();
+        sl1.cargarLibro();
+        sl2.cargarLibro();
 
         System.out.print("Libro 1: ");
-        sl.mostrarLibro(libro1);
+        sl1.mostrarLibro();
         System.out.print("Libro 2: ");
-        sl.mostrarLibro(libro2);
+        sl2.mostrarLibro();
 
     }
 }
