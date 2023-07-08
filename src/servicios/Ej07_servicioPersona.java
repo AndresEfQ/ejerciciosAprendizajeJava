@@ -2,21 +2,26 @@ package servicios;
 
 import entidades.Ej07_Persona;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ej07_servicioPersona {
 
-    private final Ej07_Persona persona = new Ej07_Persona();
+    private ArrayList<Ej07_Persona> personas = new ArrayList<>();
+    private ArrayList<Integer> IMCs = new ArrayList<>();
+    private ArrayList<Boolean> mayoresEdad = new ArrayList<>();
 
     public void crearPersona() {
+
+        Ej07_Persona persona = new Ej07_Persona();
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingresa los datos de la persona");
 
         System.out.print("Nombre: ");
-        this.persona.setNombre(sc.nextLine());
+        persona.setNombre(sc.nextLine());
 
         System.out.print("Edad: ");
-        this.persona.setEdad(Integer.parseInt(sc.nextLine()));
+        persona.setEdad(Integer.parseInt(sc.nextLine()));
 
         System.out.print("Sexo: ");
         String sexo = sc.nextLine();
@@ -25,43 +30,97 @@ public class Ej07_servicioPersona {
             System.out.println("Se asiganará el sexo 'O'");
         }
 
-        this.persona.setSexo(sexo);
+        persona.setSexo(sexo);
 
         System.out.print("Peso: ");
-        this.persona.setPeso(sc.nextInt());
+        persona.setPeso(sc.nextInt());
 
         System.out.print("Altura: ");
-        this.persona.setAltura(sc.nextInt());
+        persona.setAltura(sc.nextInt());
+
+        personas.add(persona);
     }
 
     public void crearPersona(String nombre, int edad, String sexo, int peso, int altura) {
 
+        Ej07_Persona persona = new Ej07_Persona();
+
         if (!sexo.equalsIgnoreCase("H") && !sexo.equalsIgnoreCase("M") && !sexo.equalsIgnoreCase("O")) {
             System.out.println("Sexo inválido, se asiganará el sexo 'O'");
         }
-        this.persona.setNombre(nombre);
-        this.persona.setEdad(edad);
-        this.persona.setSexo(sexo);
-        this.persona.setPeso(peso);
-        this.persona.setAltura(altura);
+        persona.setNombre(nombre);
+        persona.setEdad(edad);
+        persona.setSexo(sexo);
+        persona.setPeso(peso);
+        persona.setAltura(altura);
+
+        personas.add(persona);
     }
 
-    public int calcularIMC() {
-        int peso = this.persona.getPeso();
-        double altura = (double) this.persona.getAltura() / 100;
+    public void calcularIMCs() {
 
-        double imc = peso / (Math.pow(altura, 2));
+        for (Ej07_Persona persona : this.personas) {
+            int peso = persona.getPeso();
+            double altura = (double) persona.getAltura() / 100;
+            double imc = peso / (Math.pow(altura, 2));
 
-        if (imc < 20) {
-            return -1;
-        } else if (imc > 25) {
-            return 1;
-        } else {
-            return 0;
+            if (imc < 20) {
+                IMCs.add(-1);
+            } else if (imc > 25) {
+                IMCs.add(0);
+            } else {
+                IMCs.add(1);
+            }
         }
     }
 
-    public boolean esMayorDeEdad() {
-        return this.persona.getEdad() >= 18;
+    public int personasConBajoPeso() {
+        int bajoPeso = 0;
+        for (Integer IMC : this.IMCs) {
+            if (IMC == -1) {
+                bajoPeso++;
+            }
+        }
+        return bajoPeso;
+    }
+
+    public int personasConPesoIdeal() {
+        int pesoIdeal = 0;
+        for (Integer IMC : this.IMCs) {
+            if (IMC == 0) {
+                pesoIdeal++;
+            }
+        }
+        return pesoIdeal;
+    }
+
+    public int personasConSobrepeso() {
+        int sobrepeso = 0;
+        for (Integer IMC : this.IMCs) {
+            if (IMC == 1) {
+                sobrepeso++;
+            }
+        }
+        return sobrepeso;
+    }
+
+    public void sonMayoresDeEdad() {
+        for (Ej07_Persona persona : this.personas) {
+            mayoresEdad.add(persona.getEdad() >= 18);
+        }
+    }
+
+    public int mayores() {
+        int mayores = 0;
+        for (Boolean esMayor : this.mayoresEdad) {
+            if (esMayor) {
+                mayores++;
+            }
+        }
+        return mayores;
+    }
+
+    public int cantidadPersonas() {
+        return mayoresEdad.size();
     }
 }
