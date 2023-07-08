@@ -72,36 +72,39 @@ public class Ej07_servicioPersona {
                 IMCs.add(1);
             }
         }
+        personasConBajoPeso();
+        personasConPesoIdeal();
+        personasConSobrepeso();
     }
 
-    public int personasConBajoPeso() {
+    public void personasConBajoPeso() {
         int bajoPeso = 0;
         for (Integer IMC : this.IMCs) {
             if (IMC == -1) {
                 bajoPeso++;
             }
         }
-        return bajoPeso;
+        System.out.println("Personas con bajo peso: " + bajoPeso);
     }
 
-    public int personasConPesoIdeal() {
+    public void personasConPesoIdeal() {
         int pesoIdeal = 0;
         for (Integer IMC : this.IMCs) {
             if (IMC == 0) {
                 pesoIdeal++;
             }
         }
-        return pesoIdeal;
+        System.out.println("Personas con bajo peso: " + pesoIdeal);
     }
 
-    public int personasConSobrepeso() {
+    public void personasConSobrepeso() {
         int sobrepeso = 0;
         for (Integer IMC : this.IMCs) {
             if (IMC == 1) {
                 sobrepeso++;
             }
         }
-        return sobrepeso;
+        System.out.println("Personas con bajo peso: " + sobrepeso);
     }
 
     public void sonMayoresDeEdad() {

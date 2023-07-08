@@ -18,10 +18,6 @@ public class Ej07 {
 
         sp.calcularIMCs();
 
-        System.out.println("Personas con bajo peso: " + sp.personasConBajoPeso());
-        System.out.println("Personas con peso ideal: " + sp.personasConPesoIdeal());
-        System.out.println("Personas con sobrepeso: " + sp.personasConSobrepeso());
-
         sp.sonMayoresDeEdad();
 
         System.out.println(sp.mayores());
